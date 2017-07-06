@@ -26,7 +26,7 @@ import { Keg } from './keg.model';
      <label>Enter Beer Price per Pint:</label>
      <input #newPrice>
    </div>
-    <button (click)="submitForm(newName.value, newPriority.value); newName.value='';">Add</button>
+    <button (click)="submitForm(newName.value, newBrand.value, newFlavor.value, newABV.value, newPrice.value); newName.value=''; newBrand.value=''; newFlavor.value=''; newABV.value=''; newPrice.value='';">Add</button>
    </div>
   `
 })
@@ -34,8 +34,8 @@ import { Keg } from './keg.model';
 export class NewKegComponent {
   @Output() newKegSender = new EventEmitter();
 
-  submitForm(name: string, brand: string, flavor: string, abv: number, price: number, pints: number) {
-    var newKegToAdd: Keg = new Keg(name, brand, flavor, abv, price, pints);
+  submitForm(name: string, brand: string, flavor: string, abv: number, price: number) {
+    var newKegToAdd: Keg = new Keg(name, brand, flavor, abv, price);
     this.newKegSender.emit(newKegToAdd);
   }
 }

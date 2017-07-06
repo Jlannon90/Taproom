@@ -31,11 +31,11 @@ export class KegListComponent {
 
   isEmpty(clickedKeg: Keg) {
     if(clickedKeg.pints == 0) {
-      alert("This Keg is empty! Please change it now!");
+      console.log("This Keg is empty! Please change it now!");
     } else if(clickedKeg.pints <= 10) {
-      alert("This Keg is almost empty! Please change it now!");
+      console.log("This Keg is almost empty! Please change it now!");
     } else {
-    alert("This Keg is still full.");
+    console.log("This Keg is still full.");
     }
   }
 
