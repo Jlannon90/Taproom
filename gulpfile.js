@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var jshint = require('gulp-jshint');
 
 var lib = require('bower-files')({
   "overrides":{
@@ -84,6 +85,12 @@ gulp.task('serve', ['build'], function() {
   gulp.watch(['resources/styles/*.css', 'resources/styles/*.scss'], ['cssBuild']);      gulp.watch(['app/*.ts'], ['tsBuild']); // typescript files change, compile then reload.
 });
 
+gulp.task('jshint', function(){
+  return gulp.src(['js/*.js'])
+  .pipe(jshint())
+  .pipe(jshint.reporter('default'));
+});
+
 gulp.task('jsBuild', function(){
   browserSync.reload();
 });
@@ -100,7 +107,7 @@ gulp.task('tsBuild', ['ts'], function(){
   browserSync.reload();
 });
 
-////////////////////// GLOBAL BUILD TASK //////////////////////
+////////////////////// GLOBAL BUILD task //////////////////////
 
 gulp.task('build', ['ts'], function(){
   // we can use the buildProduction environment variable here later.
