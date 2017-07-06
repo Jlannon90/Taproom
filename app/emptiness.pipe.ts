@@ -8,25 +8,26 @@ import {Keg} from './keg.model';
 
 export class EmptinessPipe implements PipeTransform {
 
-  transform(input: Keg[], emptiness) {
+
+  transform(input: Keg[], desiredEmptiness) {
     var output: Keg[] = [];
-    if(emptiness === "full") {
+    if(desiredEmptiness == "emptyKegs") {
       for (var i = 0; i < input.length; i++) {
-        if (input[i].pints >= 10) {
+        if (input[i].pints == 0) {
           output.push(input[i]);
         }
       }
       return output;
-    } else if(emptiness === "changeMe") {
+    } else if (desiredEmptiness == "changeMeKegs") {
       for (var i = 0; i < input.length; i++) {
         if (input[i].pints <= 10) {
           output.push(input[i]);
         }
       }
       return output;
-    } else if (emptiness === "empty") {
+    } else if (desiredEmptiness == "fullKegs") {
       for (var i = 0; i < input.length; i++) {
-        if (input[i].pints === 0) {
+        if (input[i].pints >= 10) {
           output.push(input[i]);
         }
       }
@@ -35,5 +36,6 @@ export class EmptinessPipe implements PipeTransform {
       return input;
     }
   }
+
 
 }

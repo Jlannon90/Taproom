@@ -12,10 +12,6 @@ import { Keg } from './keg.model';
           <h3>Edit Keg</h3>
           <label>Enter Keg Name:</label>
           <input [(ngModel)]="childSelectedKeg.name">
-          <label>Enter Keg Pints (between 0 and 124):</label><br>
-          <input type="radio" [(ngModel)]="childSelectedKeg.pints" [value]="full">Full Keg<br>
-          <input type="radio" [(ngModel)]="childSelectedKeg.pints" [value]="changeMe">Dwindling Keg<br>
-          <input type="radio" [(ngModel)]="childSelectedKeg.pints" [value]="empty">Empty Keg
           <button (click)="doneButtonClicked()">Done</button>
         </div>
       </div>
@@ -29,5 +25,4 @@ export class EditKegComponent {
   doneButtonClicked() {
     this.doneButtonClickedSender.emit();
   }
-
 }

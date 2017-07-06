@@ -11,10 +11,9 @@ import { Keg } from './keg.model';
       <option value="fullKegs" selected="selected">Full Kegs</option>
     </select>
     <ul>
-      <li (click)="isEmpty(currentKeg)" *ngFor="let currentKeg of childKegList | pints:filterByPints">{{currentKeg.name}} {{currentKeg.pints}}
-        <input *ngIf="currentKeg.pints === 0" type="checkbox" checked (click)=""/>
-        <input *ngIf="currentKeg.pints <== 10" type="checkbox" (click)=""/>
-        <input *ngIf="currentKeg.pints > 10" type="checkbox" (click)=""/>
+      <li (click)="isEmpty(currentKeg)" *ngFor="let currentKeg of childKegList | emptiness:filterByPints">{{currentKeg.name}} {{currentKeg.pints}}
+      <label>Pour Pints:</label><br>
+      <button (click)="pourPints(currentKeg)">Pour Me One, Scotty!</button>
         <button (click)="editButtonHasBeenClicked(currentKeg)">Edit!</button>
       </li>
     </ul>
@@ -24,13 +23,14 @@ import { Keg } from './keg.model';
 export class KegListComponent {
   @Input() childKegList: Keg[];
   @Output() clickSender = new EventEmitter();
+  @Output() pourButtonClickedSender = new EventEmitter();
 
   editButtonHasBeenClicked(KegToEdit: Keg) {
     this.clickSender.emit(KegToEdit);
   }
 
   isEmpty(clickedKeg: Keg) {
-    if(clickedKeg.pints === 0) {
+    if(clickedKeg.pints == 0) {
       alert("This Keg is empty! Please change it now!");
     } else if(clickedKeg.pints <= 10) {
       alert("This Keg is almost empty! Please change it now!");
@@ -40,7 +40,7 @@ export class KegListComponent {
   }
 
   emptinessColor(currentKeg){
-    if (currentKeg.pints === 0){
+    if (currentKeg.pints == 0){
       return "bg-danger";
     } else if (currentKeg.pints <= 10) {
       return  "bg-warning";
@@ -53,9 +53,13 @@ export class KegListComponent {
     this.filterByPints = optionFromMenu;
   }
 
-  pourPints(clickedKeg: Keg, setPints: number) {
-     clickedKeg.pints = setPints -5;
-   }
+  // pourButtonClicked() {
+  //   this.pourButtonClickedSender.emit();
+  // }
+
+  pourPints(currentKeg) {
+    currentKeg.pints = currentKeg.pints -1;
+  }
 
   filterByPints: string = "pintsKegs";
 }
