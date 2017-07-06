@@ -5,6 +5,7 @@ import { Keg } from './keg.model';
   selector: 'new-keg',
   template: `
   <h1>New Keg</h1>
+  <div class="container">
    <div>
      <label>Enter Keg Name:</label>
      <input #newName>
