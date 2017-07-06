@@ -1,8 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Keg } from './Keg.model';
+import { Keg } from './keg.model';
 
 @Component({
-  selector: 'edit-Keg',
+  selector: 'edit-keg',
   template: `
     <div>
         <div *ngIf="childSelectedKeg">

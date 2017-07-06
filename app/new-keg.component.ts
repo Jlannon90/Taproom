@@ -2,7 +2,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { Keg } from './keg.model';
 
 @Component({
-  selector: 'new-Keg',
+  selector: 'new-keg',
   template: `
   <h1>New Keg</h1>
    <div>
@@ -33,7 +33,7 @@ import { Keg } from './keg.model';
 export class NewKegComponent {
   @Output() newKegSender = new EventEmitter();
 
-  submitForm(name: string, priority: number) {
+  submitForm(name: string, brand: string, flavor: string, abv: number, price: number, pints: number) {
     var newKegToAdd: Keg = new Keg(name, brand, flavor, abv, price, pints);
     this.newKegSender.emit(newKegToAdd);
   }

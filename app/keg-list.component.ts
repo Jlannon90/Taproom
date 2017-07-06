@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Keg } from './keg.model';
 
 @Component({
-  selector: 'Keg-list',
+  selector: 'keg-list',
   template: `
     <select (change)="onChange($event.target.value)">
       <option value="allKegs">All Kegs</option>

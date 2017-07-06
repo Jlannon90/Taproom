@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Keg } from './Keg.model';
+import { Keg } from './keg.model';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +7,10 @@ import { Keg } from './Keg.model';
     <div class="container">
       <h1>Highway to the Kegzone for {{month}}/{{day}}/{{year}}</h1>
       <h3>{{currentFocus}}</h3>
-      <Keg-list [childKegList]="masterKegList" (clickSender)="editKeg($event)"></Keg-list>
+      <keg-list [childKegList]="masterKegList" (clickSender)="editKeg($event)"></keg-list>
       <hr>
-      <edit-Keg [childSelectedKeg]="selectedKeg" (doneButtonClickedSender)="finishedEditing()"></edit-Keg>
-      <new-Keg (newKegSender)="addKeg($event)"></new-Keg>
+      <edit-keg [childSelectedKeg]="selectedKeg" (doneButtonClickedSender)="finishedEditing()"></edit-keg>
+      <new-keg (newKegSender)="addKeg($event)"></new-keg>
     </div>
   `
 })
